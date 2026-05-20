@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python 从入门到进阶</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/monokai.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="app">
+  <!-- ========== 主站首页 ========== -->
+  <section id="home-page">
+    <header class="home-header">
+      <h1>🐍 Python 从入门到进阶</h1>
+      <p class="home-desc">一个交互式 Python 学习平台，在浏览器中直接编写和运行 Python 代码。<br>共 26 个课时，从零基础到装饰器，循序渐进。</p>
+      <div class="overall-progress">
+        <div class="progress-info">
+          <span>学习进度</span>
+          <span id="progress-text">0 / 26 课时已完成</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="overall-progress-bar" style="width:0%"></div>
+        </div>
+      </div>
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="搜索课时...">
+      </div>
+      <div class="home-tip">点击任意课时卡片开始学习，已完成的内容可随时回顾。</div>
+    </header>
+    <div class="lesson-grid" id="lesson-grid">
+      <!-- JS 动态生成 -->
+    </div>
+  </section>
+
+  <!-- ========== 学习页面 ========== -->
+  <section id="lesson-page" class="hidden">
+    <header class="lesson-header">
+      <span class="lesson-badge" id="lesson-badge"></span>
+      <span class="card-indicator" id="card-indicator"></span>
+    </header>
+    <main class="card-area">
+      <div class="card" id="card">
+        <!-- 概念卡片或习题卡片，JS 动态渲染 -->
+      </div>
+    </main>
+    <footer class="nav-bar">
+      <button class="btn btn-secondary" id="btn-left">返回首页</button>
+      <button class="btn btn-primary" id="btn-right">下一张 ▶</button>
+    </footer>
+  </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+<script src="https://gcore.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+<script src="js/lessons.js"></script>
+<script src="js/judge.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

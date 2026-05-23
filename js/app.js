@@ -157,13 +157,33 @@ const App = {
     document.querySelectorAll('.footer-links a').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        this._showPage(link.dataset.page);
+        this._navigateTo(link.dataset.page);
       });
     });
     const btnAboutBack = document.getElementById('btn-about-back');
     const btnPrivacyBack = document.getElementById('btn-privacy-back');
-    if (btnAboutBack) btnAboutBack.addEventListener('click', () => this._goHome());
-    if (btnPrivacyBack) btnPrivacyBack.addEventListener('click', () => this._goHome());
+    if (btnAboutBack) btnAboutBack.addEventListener('click', () => this._navigateTo('home'));
+    if (btnPrivacyBack) btnPrivacyBack.addEventListener('click', () => this._navigateTo('home'));
+    // hash 路由兜底：即使 JS 事件绑定失败也能通过 URL hash 打开页面
+    window.addEventListener('hashchange', () => this._handleHash());
+    this._handleHash();
+  },
+
+  _handleHash() {
+    const hash = window.location.hash.replace('#', '');
+    if (hash === 'about') this._showPage('about');
+    else if (hash === 'privacy') this._showPage('privacy');
+    else if (!hash) this._showPage('home');
+  },
+
+  _navigateTo(page) {
+    if (page === 'home') {
+      window.location.hash = '';
+      this._goHome();
+    } else {
+      window.location.hash = page;
+      this._showPage(page);
+    }
   },
 
   // ================================================================

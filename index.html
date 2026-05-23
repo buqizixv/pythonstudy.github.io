@@ -40,65 +40,11 @@
     <footer class="site-footer">
       <div class="footer-copyright">© 2026 PythonStudy — 交互式 Python 学习平台</div>
       <nav class="footer-links">
-        <a href="#about" data-page="about">关于我们</a>
+        <a href="about.html">关于我们</a>
         <span class="footer-divider">|</span>
-        <a href="#privacy" data-page="privacy">隐私政策</a>
+        <a href="privacy.html">隐私政策</a>
       </nav>
     </footer>
-  </section>
-
-  <!-- ========== 关于页面 ========== -->
-  <section id="about-page" class="hidden">
-    <div class="page-container">
-      <h1>关于我们</h1>
-      <p>PythonStudy 是一个面向零基础学习者的交互式 Python 教学平台，共 26 个课时，涵盖变量、条件判断、循环、函数、类、装饰器等核心主题。</p>
-      <h3>功能特点</h3>
-      <ul>
-        <li>浏览器内直接编写和运行 Python 代码，无需安装任何软件</li>
-        <li>基于 <a href="https://pyodide.org" target="_blank" rel="noopener">Pyodide</a>，在浏览器中运行完整的 Python 解释器</li>
-        <li>每课时包含概念讲解和配套习题，边学边练</li>
-        <li>学习进度自动保存到本地浏览器</li>
-      </ul>
-      <h3>技术栈</h3>
-      <ul>
-        <li>Python 运行时：Pyodide (CPython compiled to WebAssembly)</li>
-        <li>代码编辑器：CodeMirror 5</li>
-        <li>前端：原生 HTML / CSS / JavaScript，无框架依赖</li>
-      </ul>
-      <button class="btn btn-secondary" id="btn-about-back">← 返回首页</button>
-    </div>
-  </section>
-
-  <!-- ========== 隐私政策页面 ========== -->
-  <section id="privacy-page" class="hidden">
-    <div class="page-container">
-      <h1>隐私政策</h1>
-      <p>最后更新日期：2026 年 5 月 23 日</p>
-      <h3>信息收集</h3>
-      <p>本网站<strong>不收集</strong>任何个人信息。所有学习进度数据仅存储在您的浏览器本地存储（localStorage）中，不会上传到任何服务器。</p>
-      <h3>数据存储</h3>
-      <ul>
-        <li><strong>学习进度</strong>：存储在浏览器 localStorage 中，仅您本人可访问</li>
-        <li><strong>代码运行</strong>：Python 代码在浏览器本地通过 Pyodide（WebAssembly）执行，代码不会被发送到任何外部服务器</li>
-      </ul>
-      <h3>广告</h3>
-      <p>本网站可能通过 Google AdSense 或其他广告联盟展示广告。广告服务商可能使用 Cookie 和 Web Beacon 技术来展示个性化广告：</p>
-      <ul>
-        <li>Google AdSense 等第三方广告商可能使用 Cookie 根据您的浏览历史投放相关广告</li>
-        <li>您可以通过<a href="https://adssettings.google.com" target="_blank" rel="noopener"> Google 广告设置</a>管理个性化广告偏好</li>
-        <li>您也可以访问 <a href="https://www.aboutads.info" target="_blank" rel="noopener">www.aboutads.info</a> 了解如何选择停用第三方广告 Cookie</li>
-      </ul>
-      <h3>第三方服务</h3>
-      <p>本网站使用以下 CDN 服务加载必要资源：</p>
-      <ul>
-        <li>cdnjs.cloudflare.com — CodeMirror 编辑器</li>
-        <li>jsdelivr.net — Pyodide Python 运行时</li>
-      </ul>
-      <p>这些 CDN 服务提供商可能会收集访问日志等基本信息，详情请参阅各自隐私政策。</p>
-      <h3>联系我们</h3>
-      <p>如对本隐私政策有任何疑问，请联系：<code>pythonstudy@example.com</code></p>
-      <button class="btn btn-secondary" id="btn-privacy-back">← 返回首页</button>
-    </div>
   </section>
 
   <!-- ========== 学习页面 ========== -->

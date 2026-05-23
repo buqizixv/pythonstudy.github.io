@@ -17,7 +17,6 @@ const App = {
     this._loadProgress();
     this._renderHomePage();
     this._bindSearch();
-    this._bindFooterLinks();
     this._showLoading();
     await this._initPyodide();
     this._hideLoading();
@@ -153,49 +152,12 @@ const App = {
     });
   },
 
-  _bindFooterLinks() {
-    document.querySelectorAll('.footer-links a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        this._navigateTo(link.dataset.page);
-      });
-    });
-    const btnAboutBack = document.getElementById('btn-about-back');
-    const btnPrivacyBack = document.getElementById('btn-privacy-back');
-    if (btnAboutBack) btnAboutBack.addEventListener('click', () => this._navigateTo('home'));
-    if (btnPrivacyBack) btnPrivacyBack.addEventListener('click', () => this._navigateTo('home'));
-    // hash 路由兜底：即使 JS 事件绑定失败也能通过 URL hash 打开页面
-    window.addEventListener('hashchange', () => this._handleHash());
-    this._handleHash();
-  },
-
-  _handleHash() {
-    const hash = window.location.hash.replace('#', '');
-    if (hash === 'about') this._showPage('about');
-    else if (hash === 'privacy') this._showPage('privacy');
-    else if (!hash) this._showPage('home');
-  },
-
-  _navigateTo(page) {
-    if (page === 'home') {
-      window.location.hash = '';
-      this._goHome();
-    } else {
-      window.location.hash = page;
-      this._showPage(page);
-    }
-  },
-
   // ================================================================
   //  页面切换
   // ================================================================
   _showPage(pageName) {
     document.getElementById('home-page').classList.toggle('hidden', pageName !== 'home');
     document.getElementById('lesson-page').classList.toggle('hidden', pageName !== 'lesson');
-    const aboutEl = document.getElementById('about-page');
-    const privacyEl = document.getElementById('privacy-page');
-    if (aboutEl) aboutEl.classList.toggle('hidden', pageName !== 'about');
-    if (privacyEl) privacyEl.classList.toggle('hidden', pageName !== 'privacy');
   },
 
   _enterLesson(lessonId) {

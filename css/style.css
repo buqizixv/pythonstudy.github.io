@@ -242,6 +242,49 @@ body {
 @keyframes spin { to { transform: rotate(360deg); } }
 .loading-box p { color: #64748b; font-size: 14px; }
 
+/* ========== Footer ========== */
+.site-footer {
+  text-align: center; padding: 32px 16px 16px;
+  border-top: 1px solid #e2e8f0; margin-top: 40px;
+}
+.footer-copyright {
+  font-size: 13px; color: #94a3b8; margin-bottom: 8px;
+}
+.footer-links {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.footer-links a {
+  font-size: 13px; color: #6366f1; text-decoration: none; transition: color .2s;
+}
+.footer-links a:hover { color: #4f46e5; text-decoration: underline; }
+.footer-divider { color: #d1d5db; font-size: 13px; }
+
+/* ========== About / Privacy Pages ========== */
+.page-container {
+  max-width: 720px; margin: 40px auto; padding: 32px 36px;
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.page-container h1 {
+  font-size: 28px; color: #1e293b; margin-bottom: 8px;
+}
+.page-container h3 {
+  font-size: 17px; color: #334155; margin: 24px 0 10px;
+}
+.page-container p {
+  font-size: 15px; color: #475569; line-height: 1.8; margin-bottom: 12px;
+}
+.page-container ul {
+  margin: 8px 0 16px 20px; font-size: 15px; color: #475569; line-height: 1.8;
+}
+.page-container ul li { margin-bottom: 6px; }
+.page-container code {
+  background: #f1f5f9; padding: 2px 8px; border-radius: 4px;
+  font-family: "SF Mono", "Fira Code", Consolas, monospace; font-size: 14px;
+  color: #4f46e5;
+}
+.page-container .btn { margin-top: 20px; }
+
 /* ========== Responsive ========== */
 @media (max-width: 640px) {
   .lesson-grid { grid-template-columns: 1fr; }

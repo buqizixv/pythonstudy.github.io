@@ -1,41 +1,164 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "306e87b7dc5f4c2b8021fab2769195d0"}'></script><!-- End Cloudflare Web Analytics -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="一个交互式 Python 学习平台，在浏览器中直接编写和运行 Python 代码。共 26 个课时，从零基础到装饰器，循序渐进。">
+<meta name="description" content="🐍 闯关学 Python！26 个关卡从零到大师，在浏览器中直接编写和运行 Python 代码。">
 <meta name="keywords" content="Python,教程,入门,编程,交互式学习,在线运行">
-<title>Python 从入门到进阶 - 交互式学习平台</title>
+<title>🐍 Python 冒险之旅 - 闯关学编程</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/monokai.min.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/pixel.css">
 </head>
-<body>
+<body class="home-bg dark">
+
+<button class="theme-toggle" id="theme-toggle" title="切换暗色/亮色模式" aria-label="切换主题">🌙</button>
+<button class="sound-toggle" id="sound-toggle" title="音效开关" aria-label="音效开关">🔊</button>
+<button class="lang-toggle" id="lang-toggle" title="Switch Language / 切换语言" aria-label="切换语言">中</button>
+
+<!-- 流动光点 -->
+<div class="floating-spark"></div><div class="floating-spark"></div><div class="floating-spark"></div><div class="floating-spark"></div><div class="floating-spark"></div><div class="floating-spark"></div><div class="floating-spark"></div><div class="floating-spark"></div>
+
+<!-- 奇幻场景底图 -->
+<svg class="fantasy-scene" viewBox="0 0 1200 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="#06060f"/>
+    </linearGradient>
+    <radialGradient id="dragonFire" cx="0.78" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#ff3333" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ff3333" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="magicGlow" cx="0.25" cy="0.6" r="0.3">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 天空渐变遮罩 -->
+  <rect width="1200" height="320" fill="url(#skyGrad)"/>
+
+  <!-- 魔法光晕 -->
+  <ellipse cx="300" cy="200" rx="350" ry="180" fill="url(#magicGlow)"/>
+  <ellipse cx="900" cy="220" rx="400" ry="200" fill="url(#dragonFire)"/>
+
+  <!-- 最远山 -->
+  <polygon points="0,320 0,180 60,155 120,170 180,140 240,160 300,130 360,150 420,145 480,165 540,135 600,155 660,140 720,160 780,135 840,155 900,145 960,165 1020,140 1080,160 1140,150 1200,170 1200,320" fill="#12122a" opacity="0.6"/>
+
+  <!-- 中山 -->
+  <polygon points="0,320 0,210 80,190 140,200 200,170 260,195 320,175 380,200 440,180 500,205 560,185 620,208 680,180 740,200 800,175 860,195 920,180 980,205 1040,190 1100,210 1160,195 1200,215 1200,320" fill="#0e0e24" opacity="0.75"/>
+
+  <!-- 近山 -->
+  <polygon points="0,320 0,235 60,225 110,240 150,215 200,235 250,220 300,240 350,210 400,235 450,225 500,245 550,215 600,235 650,220 700,240 750,210 800,235 850,225 900,245 950,220 1000,240 1050,225 1100,245 1150,235 1200,250 1200,320" fill="#0a0a1a" opacity="0.9"/>
+
+  <!-- 左边城堡 -->
+  <g transform="translate(160, 155)" opacity="0.55">
+    <rect x="0" y="10" width="30" height="55" fill="#161630"/>
+    <rect x="-8" y="20" width="18" height="45" fill="#12122a"/>
+    <rect x="20" y="20" width="18" height="45" fill="#12122a"/>
+    <polygon points="-8,20 7,0 22,20" fill="#1a1a38"/>
+    <polygon points="20,20 35,0 50,20" fill="#1a1a38"/>
+    <polygon points="4,20 15,5 26,20" fill="#1e1e40"/>
+    <!-- 窗户光 -->
+    <rect x="6" y="30" width="4" height="5" fill="#fbbf24" opacity="0.6" rx="1"/>
+    <rect x="10" y="42" width="3" height="4" fill="#fbbf24" opacity="0.3" rx="1"/>
+  </g>
+
+  <!-- 恶龙 🐉 -->
+  <g transform="translate(860, 150) scale(0.7)" opacity="0.5">
+    <!-- 身体 -->
+    <ellipse cx="60" cy="70" rx="55" ry="20" fill="#1a1020"/>
+    <!-- 尾巴 -->
+    <path d="M110,65 Q140,55 160,35 Q170,25 175,15" stroke="#1a1020" stroke-width="6" fill="none"/>
+    <polygon points="175,15 180,8 168,12" fill="#1a1020"/>
+    <!-- 脖子 -->
+    <rect x="10" y="30" width="18" height="40" rx="8" fill="#1a1020"/>
+    <!-- 头 -->
+    <ellipse cx="15" cy="28" rx="16" ry="12" fill="#1a1020"/>
+    <!-- 角 -->
+    <polygon points="5,18 2,6 12,16" fill="#1a1020"/>
+    <polygon points="25,18 30,5 20,16" fill="#1a1020"/>
+    <!-- 眼睛 -->
+    <circle cx="10" cy="25" r="2.5" fill="#ff4444"/>
+    <!-- 翅膀 -->
+    <path d="M50,55 Q35,15 60,5 Q70,20 65,40" fill="#181028" opacity="0.8"/>
+    <path d="M65,55 Q80,25 95,15 Q90,30 80,45" fill="#181028" opacity="0.6"/>
+    <!-- 吐火 -->
+    <ellipse cx="-5" cy="30" rx="12" ry="6" fill="#ff4500" opacity="0.3"/>
+    <ellipse cx="-15" cy="32" rx="8" ry="4" fill="#ff6600" opacity="0.2"/>
+  </g>
+
+  <!-- 地上的冒险之路 -->
+  <path d="M0,290 Q100,280 200,275 Q350,265 500,272 Q650,280 800,268 Q950,260 1200,270" stroke="#fbbf24" stroke-width="1.5" fill="none" opacity="0.15" stroke-dasharray="4 8"/>
+
+  <!-- 路边旗标 -->
+  <g opacity="0.2">
+    <line x1="150" y1="272" x2="150" y2="258" stroke="#a78bfa" stroke-width="1"/>
+    <polygon points="150,260 158,262 150,264" fill="#a78bfa"/>
+    <line x1="500" y1="265" x2="500" y2="252" stroke="#a78bfa" stroke-width="1"/>
+    <polygon points="500,254 508,256 500,258" fill="#a78bfa"/>
+    <line x1="900" y1="258" x2="900" y2="245" stroke="#a78bfa" stroke-width="1"/>
+    <polygon points="900,247 908,249 900,251" fill="#a78bfa"/>
+  </g>
+
+  <!-- 篝火点 -->
+  <circle cx="250" cy="268" r="2" fill="#fbbf24" opacity="0.4"/>
+  <circle cx="700" cy="263" r="2" fill="#fbbf24" opacity="0.4"/>
+  <circle cx="1050" cy="265" r="2" fill="#fbbf24" opacity="0.3"/>
+</svg>
 
 <div id="app">
   <!-- ========== 主站首页 ========== -->
   <section id="home-page">
     <header class="home-header">
-      <h1>🐍 Python 从入门到进阶</h1>
-      <p class="home-desc">一个交互式 Python 学习平台，在浏览器中直接编写和运行 Python 代码。<br>共 26 个课时，从零基础到装饰器，循序渐进。</p>
-      <div class="overall-progress">
-        <div class="progress-info">
-          <span>学习进度</span>
-          <span id="progress-text">0 / 26 课时已完成</span>
+      <h1>🐍 Python 冒险之旅</h1>
+      <p class="home-desc">选择关卡，编写代码，击败挑战！</p>
+
+      <!-- 游戏 HUD 顶部栏 -->
+      <div class="game-hud">
+        <div class="game-hud-left">
+          <div class="hud-avatar" id="hud-avatar">🐣</div>
+          <div class="hud-info">
+            <div class="hud-name">ADVENTURER</div>
+            <div class="hud-title" id="rank-title">🐣 Python 新手</div>
+          </div>
+          <span class="hud-level-badge" id="hud-level">Lv.1</span>
         </div>
-        <div class="progress-bar-track">
-          <div class="progress-bar-fill" id="overall-progress-bar" style="width:0%"></div>
+        <div class="hud-bars">
+          <div class="hud-bar-row">
+            <span class="hud-bar-label">XP</span>
+            <div class="hud-bar-track"><div class="hud-xp-fill" id="xp-bar-fill" style="width:0%"></div></div>
+            <span class="hud-bar-val" id="xp-text">0 / 100</span>
+          </div>
+          <div class="hud-bar-row">
+            <span class="hud-bar-label">HP</span>
+            <div class="hud-bar-track"><div class="hud-hp-fill" id="hp-bar-fill" style="width:100%"></div></div>
+            <span class="hud-bar-val" id="hp-text">100 / 100</span>
+          </div>
         </div>
+        <div class="hud-right">
+          <div class="hud-currency"><span class="hud-currency-icon">🪙</span><span id="gold-display">0</span></div>
+        </div>
+        <div class="badge-list" id="badge-list" style="flex:0 0 100%;margin-top:4px;"></div>
       </div>
+
+      <!-- 任务追踪 -->
+      <div class="quest-tracker">
+        <span class="quest-label">📋 当前任务</span>
+        <span class="quest-text" id="quest-text">完成第一关：print() 输出函数</span>
+        <span class="quest-progress" id="quest-progress">0/26</span>
+      </div>
+
       <div class="search-box">
-        <input type="text" id="search-input" placeholder="搜索课时...">
+        <input type="text" id="search-input" placeholder="搜索关卡...">
       </div>
-      <div class="home-tip">点击任意课时卡片开始学习，已完成的内容可随时回顾。</div>
+      <div class="home-tip"></div>
     </header>
-    <div class="lesson-grid" id="lesson-grid">
-      <!-- JS 动态生成 -->
+    <div class="world-map" id="world-map">
+      <!-- JS 动态生成世界地图 -->
     </div>
 
     <footer class="site-footer">
@@ -71,6 +194,11 @@
 <script src="https://gcore.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
 <script src="js/lessons.js"></script>
 <script src="js/judge.js"></script>
+<script src="js/confetti.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/regions.js"></script>
+<script src="js/worldmap.js"></script>
+<script src="js/character.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
